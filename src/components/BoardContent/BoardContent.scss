@@ -1,0 +1,82 @@
+@import './setting.scss';
+
+$column-header-height: 36px;
+$column-footer-height: 36px;
+$column-border-height: 5px;
+$card-border-height: 4px;
+
+.board-content{
+    display: flex;
+    margin: 0 $gap $gap;
+    overflow-x: auto;
+    &::-webkit-scrollbar {
+      -webkit-appearance: none;
+    }
+    &::-webkit-scrollbar:horizontal {
+      height: 11px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: $common-element-gb;
+      border-radius: 8px ;
+    }
+    
+    .column{
+      flex: 0 0 auto;
+      width: 300px;
+      height: calc(100% - #{$gap});
+      margin-left: $gap;
+      > * {
+        background-color: $list-bg-color;
+        color: #333;
+        padding: 0 8px;
+      }
+      header {
+        padding-left: 15px;
+        height: $column-header-height;
+        line-height: $column-header-height;
+        font-size: 16px;
+        font-weight: bold;
+        border-top-left-radius: $column-border-height;
+        border-top-right-radius: $column-border-height;
+      }
+      footer {
+        padding-left: 15px;
+        height: $column-footer-height;
+        line-height: $column-footer-height;
+        border-top-left-radius: $column-border-height;
+        border-top-right-radius: $column-border-height;
+      }
+      ul {
+        list-style-type: none;
+        margin: 0;
+        max-height: calc(100% - #{$column-header-height} - #{$column-footer-height});
+        overflow-y: auto;
+        &::-webkit-scrollbar {
+          -webkit-appearance: none;
+        }
+        &::-webkit-scrollbar:vertical {
+          width: 11px;
+        }
+        &::-webkit-scrollbar-thumb {
+          background-color: darken($list-bg-color, 15);
+          border-right: 5px solid $list-bg-color;
+        }
+        li {
+          background-color: white;
+          padding: $gap;
+          border-radius: $card-border-height;
+          box-shadow: 0 1px 1px rgba(0,0,0,0.1 );
+          &:not(:last-child) {
+            margin-bottom: $gap;
+          }
+          img {
+            display: block;
+            width: calc(100% + 2 * #{$gap});
+            margin: -$gap 0 $gap (-$gap);
+            border-top-left-radius: $column-border-height;
+            border-top-right-radius: $column-border-height;
+          }
+        }
+      }
+    }
+  }
